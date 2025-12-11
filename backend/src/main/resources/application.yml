@@ -1,0 +1,27 @@
+# Configuració general de l'aplicació
+spring:
+  application:
+    name: template-daw-backend
+
+  # Perfil actiu per defecte
+  profiles:
+    active: dev
+
+  # Configuració de CORS
+  web:
+    cors:
+      allowed-origins: "*"
+      allowed-methods: "*"
+      allowed-headers: "*"
+
+# Configuració del servidor
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# Configuració de logs
+logging:
+  level:
+    root: INFO
+    cat.daw.template: DEBUG

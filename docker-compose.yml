@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  # Base de dades PostgreSQL
+  db:
+    image: postgres:16-alpine
+    container_name: template-db
+    environment:
+      POSTGRES_DB: template_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - template-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend Spring Boot
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: template-backend
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: template_db
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - template-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Frontend Angular
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: template-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - template-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  template-network:
+    driver: bridge

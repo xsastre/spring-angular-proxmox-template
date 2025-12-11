@@ -1,0 +1,28 @@
+# Configuració per a l'entorn de producció
+spring:
+  # Base de dades PostgreSQL
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:template_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  # JPA/Hibernate per PostgreSQL
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+# Configuració del servidor en producció
+server:
+  port: 8080
+
+# Logs menys detallats en producció
+logging:
+  level:
+    root: WARN
+    cat.daw.template: INFO

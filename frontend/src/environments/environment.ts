@@ -1,0 +1,5 @@
+// Configuració per a l'entorn de desenvolupament
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8080/api'
+};

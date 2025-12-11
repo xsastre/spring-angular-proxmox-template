@@ -1,0 +1,58 @@
+<div class="container">
+  <header>
+    <h1>{{ title }}</h1>
+    <p class="subtitle">Plantilla per a projectes DAW amb desplegament automàtic a Proxmox</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Estat del Backend</h2>
+      
+      <div *ngIf="loading" class="loading">
+        <p>Carregant...</p>
+      </div>
+
+      <div *ngIf="!loading && !error">
+        <div class="status-item">
+          <strong>Estat:</strong>
+          <span class="status-badge" [class.status-up]="backendStatus === 'UP'">
+            {{ backendStatus }}
+          </span>
+        </div>
+        
+        <div class="status-item">
+          <strong>Missatge:</strong>
+          <span>{{ backendMessage }}</span>
+        </div>
+      </div>
+
+      <div *ngIf="error" class="error">
+        <p>{{ error }}</p>
+      </div>
+
+      <button (click)="reload()" class="btn">Recarregar</button>
+    </div>
+
+    <div class="info-card">
+      <h3>Què és aquesta plantilla?</h3>
+      <p>
+        Aquesta és una plantilla per a projectes DAW que integra:
+      </p>
+      <ul>
+        <li><strong>Backend:</strong> Spring Boot 3.x amb Java 17</li>
+        <li><strong>Frontend:</strong> Angular 17+</li>
+        <li><strong>Base de dades:</strong> H2 (dev) / PostgreSQL (prod)</li>
+        <li><strong>CI/CD:</strong> GitHub Actions</li>
+        <li><strong>Desplegament:</strong> Contenidors LXC a Proxmox</li>
+      </ul>
+      
+      <p class="instructions">
+        Consulta el <code>README.md</code> per instruccions detallades d'ús.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Desenvolupat per alumnes de DAW</p>
+  </footer>
+</div>

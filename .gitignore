@@ -1,0 +1,55 @@
+# Fitxers de compilació i dependències
+
+# Backend (Maven/Java)
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+*.ear
+.mvn/wrapper/*.jar
+
+# Frontend (Node/Angular)
+node_modules/
+dist/
+.angular/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Fitxers temporals
+*.tmp
+*.bak
+*.swn
+.cache/
+
+# Variables d'entorn locals
+.env
+.env.local
+
+# Logs
+logs/
+*.log
+
+# Cobertura de tests
+coverage/
+*.lcov
+
+# Base de dades local
+*.db
+*.sqlite
+*.sqlite3
+
+# Sistema operatiu
+Thumbs.db
+.DS_Store
