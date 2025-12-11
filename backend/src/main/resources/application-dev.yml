@@ -1,0 +1,36 @@
+# Configuració per a l'entorn de desenvolupament
+spring:
+  # Base de dades H2 en memòria
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  # Consola H2
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  # JPA/Hibernate
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# Configuració del servidor en desenvolupament
+server:
+  port: 8080
+
+# Logs més detallats en desenvolupament
+logging:
+  level:
+    root: INFO
+    cat.daw.template: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
