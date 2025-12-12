@@ -1,3 +1,7 @@
+<img src="https://docencia.xaviersastre.cat/imatges/logosxs/logo_xaviersastre_v3_1.webp" alt="drawing" width="50%"/>
+
+[![Desenvolupat al des-2025](https://img.shields.io/badge/Desenvolupat%20al-des--2025-yellow)](https://github.com/xsastre)
+
 # Template DAW: Spring Boot + Angular + Proxmox
 
 [![Build, Test i Deploy](https://github.com/xsastre/spring-angular-proxmox-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/xsastre/spring-angular-proxmox-template/actions/workflows/deploy.yml)
@@ -272,4 +276,4 @@ Per a preguntes o problemes:
 
 ---
 
-Desenvolupat amb ❤️ per a l'assignatura de DAW
+Desenvolupat per en Xavier pels mòduls DWEC i DWES de DAW (des. 2025)
