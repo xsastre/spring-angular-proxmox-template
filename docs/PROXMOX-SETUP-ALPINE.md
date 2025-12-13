@@ -30,6 +30,8 @@ Internet / Xarxa local
 
 ## Part 1: Configuració dels contenidors LXC a Proxmox
 
+> **Nota**: Els contenidors dels alumnes continuen utilitzant Ubuntu/Debian, ja que són més familiars i tenen millor suport per a Java, PostgreSQL i les eines de desenvolupament. Només el reverse proxy utilitzarà Alpine Linux per aprofitar la seva lleugeresa i eficiència.
+
 ### Crear un contenidor LXC base
 
 1. **Accedir a Proxmox VE**:
@@ -787,8 +789,8 @@ rc-update show
 
 ### Error 502 Bad Gateway
 
-- El backend dins del LXC no està funcionant
-- Comprovar: `systemctl status backend.service` dins del LXC de l'alumne
+- El backend dins del LXC de l'alumne no està funcionant
+- Comprovar: `systemctl status backend.service` dins del LXC de l'alumne (Ubuntu/Debian)
 - Verificar que el port 80 està obert al contenidor de l'alumne
 
 ### Error 404 Not Found
